@@ -1,10 +1,14 @@
 {% extends 'base.html'%}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
 
 {%block content%}
+<form method="post" action="/confirmation">
 <p>{{data.question}}</p>
-<ul>
-    {% for choice in data.options %}
-    <li>{{choice.optionText}}</li>
+<select class="form-select" multiple aria-label="multiple select example">
+    {% for i in range(data.options|length) %}
+    <option value=i|string>{{data.options[i].optionText}}</option>
     {% endfor %}
-</ul>
+</select>
+<input type="submit" value="Submit">
+</form>
 {%endblock%}
