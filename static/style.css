@@ -1,4 +1,19 @@
 body {
     background-image: url(/static/background.jpg);
     background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.logo {
+    content: url(/static/logo.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 15%;
+    max-height:15%;
+    margin: auto;
+
 }
