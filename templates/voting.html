@@ -1,4 +1,10 @@
 {% extends 'base.html'%}
 
 {%block content%}
+<p>{{data.question}}</p>
+<ul>
+    {% for choice in data.options %}
+    <li>{{choice.optionText}}</li>
+    {% endfor %}
+</ul>
 {%endblock%}

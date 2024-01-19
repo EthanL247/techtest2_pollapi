@@ -1,5 +1,5 @@
 # external modules
-from flask import Flask,render_template
+from flask import Flask
 from flask_restful import Resource, Api
 from abc import ABC
 
@@ -28,23 +28,9 @@ class Votes(Resource):
         res = open_votejson()
         return res
         
-@app.route("/")
-def voting():
-    return render_template('base.html')
-
-@app.route("/voting")
-def vote():
-    return render_template('voting.html')
-
-
-@app.route("/confirmation")
-def confirm():
-    return render_template('confirmation.html')
-
-
     
-# api.add_resource(Polls,'/voting')
-# api.add_resource(Votes,'/confirmation')
+api.add_resource(Polls,'/voting')
+api.add_resource(Votes,'/confirmation')
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
