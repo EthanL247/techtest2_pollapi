@@ -2,11 +2,11 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
 
 {%block content%}
-<form method="post" action="/confirmation">
+<form action="{{url_for('confirm_page')}}" method="post">
 <p>{{data.question}}</p>
-<select class="form-select" multiple aria-label="multiple select example">
+<select name="vote_options" class="form-select" multiple aria-label="multiple select example">
     {% for i in range(data.options|length) %}
-    <option value=i|string>{{data.options[i].optionText}}</option>
+    <option value="{{data.options[i].optionText}}">{{data.options[i].optionText}}</option>
     {% endfor %}
 </select>
 <input type="submit" value="Submit">
