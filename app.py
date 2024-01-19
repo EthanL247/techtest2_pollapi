@@ -9,7 +9,7 @@ import sys
 sys.path.append(".") #allows modules to be discovered
 from classes.utility import open_polljson, open_votejson
 
-app = Flask("API")
+app = Flask("API",template_folder="templates")
 api = Api(app)
 
 class Polls(Resource):
@@ -32,9 +32,19 @@ class Votes(Resource):
 def voting():
     return render_template('base.html')
 
+@app.route("/voting")
+def vote():
+    return render_template('voting.html')
+
+
+@app.route("/confirmation")
+def confirm():
+    return render_template('confirmation.html')
+
+
     
-api.add_resource(Polls,'/voting')
-api.add_resource(Votes,'/confirmation')
+# api.add_resource(Polls,'/voting')
+# api.add_resource(Votes,'/confirmation')
 
 if __name__ == '__main__':
     app.run()
