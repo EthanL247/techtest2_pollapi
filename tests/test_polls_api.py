@@ -5,7 +5,7 @@ import pytest
 #internal libraries
 import sys
 sys.path.append(".") #allows modules to be discovered
-from app import Polls, Votes
+from api import Polls, Votes
 
 
 def test_PollAPI_get_returndictionary():

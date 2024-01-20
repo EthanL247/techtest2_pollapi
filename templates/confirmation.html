@@ -1,6 +1,7 @@
 {% extends 'base.html'%}
 
 {%block content%}
-<p>This is the confirmation page</p>
-{{data}}
+<h1>Thank you for your response<h1>
+<p> You have voted for: {{form_data}} </p>
+<p>{{votes_data}}</p>
 {%endblock%}

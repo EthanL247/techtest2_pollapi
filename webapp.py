@@ -1,6 +1,7 @@
 from flask import Flask, render_template,url_for, redirect,request
 import requests
 import json
+from classes.utility import percent_calc
 
 app = Flask("App")
 
@@ -15,14 +16,19 @@ def retrieve_poll():
 
 @app.route('/voting', methods=['Post'])
 def submit_vote():
-    """ Submit vote option to somewhere"""
+    """ Submit vote option to confirm page to display"""
     return redirect(url_for("confirm_page"))
 
 @app.route('/confirmation', methods=['GET','POST'])
 def confirm_page():
     """ Gets the votes details and displays confirm after submission"""
-    data = request.form.get('vote_options')
-    return render_template('confirmation.html',data=data)
+    form_data = request.form.get('vote_options')
+    votes_response = requests.get('http://localhost:5000/confirmation')
+    graph_data = percent_calc(votes_response.text)
+    
+    # some function to handle this data 
+    return render_template('confirmation.html',form_data=form_data,
+                           votes_data=graph_data)
 
 
 # @app.route('/confirmation')
