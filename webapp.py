@@ -14,26 +14,26 @@ def retrieve_poll():
     return render_template('voting.html',data=data)
 
 
-@app.route('/voting', methods=['Post'])
-def submit_vote():
+@app.route('/voting', methods=['POST','GET'])
+def confirm_page():
     """ Submit vote option to confirm page to display"""
     return redirect(url_for("confirm_page"))
 
-@app.route('/confirmation', methods=['GET','POST'])
-def confirm_page():
-    """ Gets the votes details and displays confirm after submission"""
-    form_data = request.form.get('vote_options')
-    votes_response = requests.get('http://localhost:5000/confirmation')
-    graph_data = percent_calc(votes_response.text)
-    
-    # some function to handle this data 
-    return render_template('confirmation.html',form_data=form_data,
-                           votes_data=graph_data)
-
-
-# @app.route('/confirmation')
+# @app.route('/confirmation', methods=['GET','POST'])
 # def confirm_page():
-#     pass
+#     """ Gets the votes details and displays confirm after submission"""
+#     form_data = request.form.get('vote_options')
+#     votes_response = requests.get('http://localhost:5000/confirmation')
+#     graph_data = percent_calc(votes_response.text)
+    
+#     # some function to handle this data 
+#     return render_template('confirmation.html',form_data=form_data,
+#                            votes_data=graph_data)
 
+@app.route('/Getting',methods=['GET'])
+def get_confirm():
+    response = requests.get('http://localhost:5000/1')
+    return response.text
+    
 if __name__ == '__main__':
    app.run(debug=True, host='0.0.0.0', port=80)

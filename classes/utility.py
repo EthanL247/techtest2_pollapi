@@ -2,6 +2,7 @@
 #external libraries
 import json
 import plotly.express as px
+from collections import defaultdict
 
 #custom libraries
 import sys
@@ -26,24 +27,26 @@ def percent_calc(response_text: object) -> dict:
     """ Calculates percentage from vote returns dict: option:%count """
     votes_dict = json.loads(response_text)
     votes_data = votes_dict["data"]
+    
+    graph_data = defaultdict(list)
+    graph_data["Options"] = list(votes_data.keys())
     total =  sum(list(votes_data.values()))
-    graph_data = {}
     for option in votes_data:
-        graph_data[option] = round((votes_data[option]/total)*100)
+        int_percentage = round((votes_data[option]/total)*100)
+        graph_data["Percentage of Votes"].append(int_percentage)
+    
     return graph_data
-    
-    
-graph_data={
-    "option1": 80,
-    "option2": 10,
-    "option3":10
-}
-
-def display_graph(graph_data: dict) -> None:
-    fig - px.bar(graph_data)
-    plt.show()
-    
-display_graph
 
 
+# def create_graph(graph_data: dict) -> object:
+#     x_axis = list(graph_data.keys())[1]
+#     y_axis = list(graph_data.keys())[0]
+#     return px.bar(graph_data,x=x_axis,y=y_axis)
+
+# graph_data= defaultdict(list)
+# graph_data["Options"] =['Manchester','Arsenal','Liverpool']
+# graph_data['Percentage of Votes'] = [20,40,40]
+
+# fig = px.bar(graph_data,x=list(graph_data.keys())[1],y=list(graph_data.keys())[0])
+# fig.show()
     
