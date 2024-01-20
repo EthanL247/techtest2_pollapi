@@ -36,7 +36,7 @@ class Votes(Resource):
         self.vote_data = []
         self.vote_data.append(open_polljson())
         
-    def get(self,poll_id):
+    def get(self,poll_id,option_id=None):
         """ Gets Votes for a poll by pollID: Local Version """
         # looks through the local resource 
         # Complexity: O(N) 
@@ -86,8 +86,8 @@ class Votes(Resource):
         
     
         
-api.add_resource(Polls,'/voting')
-api.add_resource(Votes,'/polls/<poll_id>/<option_id>')
+api.add_resource(Polls,'/polls')
+api.add_resource(Votes,'/votes/<poll_id>/<option_id>')
 
 if __name__ == '__main__':
     app.run(debug=True)
