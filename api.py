@@ -39,11 +39,14 @@ class Votes(Resource):
     def get(self,poll_id):
         """ Gets Votes for a poll by pollID: Local Version """
         # looks through the local resource 
+        # Complexity: O(N) 
         for d in self.vote_data:
             if d['pollId'] == int(poll_id):
                 return d
             else:
-                return "Not Found"
+                continue
+        # return error if not found
+        return 404
         """ Data Base Option: Fake Code for demonstration """
         # 1. Intialise database object 
         # 2. data = db.execute(WHERE pollID = poll_id)
@@ -51,12 +54,28 @@ class Votes(Resource):
         
         
         
-    # def post(self,pollId,optionid):
-    #     self.options_data[{pollid:optionid}] #saving locally 
-    #     open self.vote_data
-    #     find correct poll
-    #     find correct option
-    #     option += 1 
+    def post(self,poll_id,option_id):
+        """ Posts poll_id and option_id to update votes: local version"""
+        # Complexity: O(2N) 
+        for d in self.vote_data:
+            if d['pollId'] == int(poll_id):
+                poll = d
+            else:
+                continue
+        
+        for element in d['options']:
+            if element['optionId'] == int(option_id):
+                element['count']+=1
+            else:
+                continue
+        
+        print(self.vote_data[0])
+        return 204
+        
+                
+            
+                # Incrementing count variable
+            
         
     #     """ db case """
     #     # get the write vote table
@@ -68,7 +87,7 @@ class Votes(Resource):
     
         
 api.add_resource(Polls,'/voting')
-api.add_resource(Votes,'/polls/<poll_id>')
+api.add_resource(Votes,'/polls/<poll_id>/<option_id>')
 
 if __name__ == '__main__':
     app.run(debug=True)

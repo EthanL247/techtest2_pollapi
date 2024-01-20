@@ -6,18 +6,42 @@ from classes.utility import percent_calc
 app = Flask("App")
 
 
-@app.route('/voting',methods=['GET'])
+@app.route('/vote',methods=['GET'])
 def retrieve_poll():
     """ Gets poll detail from PollAPI to display options"""
     response = requests.get('http://localhost:5000/voting')
     data = json.loads(response.text)
-    return render_template('voting.html',data=data)
+    return render_template('vote.html',data=data)
 
 
-@app.route('/voting', methods=['POST','GET'])
-def confirm_page():
-    """ Submit vote option to confirm page to display"""
-    return redirect(url_for("confirm_page"))
+@app.route('/vote',methods=['GET','POST'])
+def submit():
+    """Submit to post poll_id and option_id"""
+    option_id = request.form.get('option_id')
+    poll_id = request.form.get('poll_id')
+    
+    # post vote
+    base_url = 'http://localhost:5000/polls/'+poll_id+'/'+option_id
+    send = requests.post(base_url)
+    return option_id
+
+# @app.route('/confirm',methods=['GET','POST'])
+# def confirm_page(poll_id,option_id):
+#     """ Recieves poll_id and option_id """
+#     option_id = request.form.get('option_id')
+#     poll_id = request.form.get('poll_id')
+#     base_url = 'http://localhost:5000/polls/'
+    
+#     #post data
+#     # param = [poll_id,option_id]
+#     # send = requests.post(base_url+poll_id)
+    
+#     #get poll by id
+#     response =requests.get(base_url+poll_id)
+#     data = response.text
+    
+#     return data
+
 
 # @app.route('/confirmation', methods=['GET','POST'])
 # def confirm_page():
@@ -30,10 +54,5 @@ def confirm_page():
 #     return render_template('confirmation.html',form_data=form_data,
 #                            votes_data=graph_data)
 
-@app.route('/Getting',methods=['GET'])
-def get_confirm():
-    response = requests.get('http://localhost:5000/1')
-    return response.text
-    
 if __name__ == '__main__':
    app.run(debug=True, host='0.0.0.0', port=80)
