@@ -53,13 +53,29 @@ class HBar(Graph):
     
     def fig(self,graph_data: dict) -> object:
         """ Creates graph """
-        x_axis = list(graph_data.keys())[1]
-        y_axis = list(graph_data.keys())[0]
-        fig = px.bar(graph_data,x=x_axis,y=y_axis)
+        x_axis = list(graph_data.keys())[1] # percentages
+        y_axis = list(graph_data.keys())[0] # options
+        
+        text_names = []
+        for num in graph_data['Percentage Votes']:
+            text_names.append(str(num)+'%')
+            
+
+        fig = px.bar(graph_data,x=x_axis,y=y_axis,text=text_names)
         fig.update_layout({
             'plot_bgcolor':'rgba(0,0,0,0)',
             'paper_bgcolor':'rgba(0,0,0,0)',
+            'font_color': 'white',
+            'font_size': 20,
+            'xaxis_range': [0,100],
+            'xaxis_visible': False,
+                      
         })
+        
+        fig.update_traces(textposition='inside')
+        fig.update_traces(marker_color='#996BF9')
+        fig.update_traces(textfont_color='white')
+        
         return fig
 
     
