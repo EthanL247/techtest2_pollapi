@@ -3,6 +3,7 @@
 import json
 import plotly.express as px
 from collections import defaultdict
+from classes.abstract_classes import Graph
 
 #custom libraries
 import sys
@@ -23,20 +24,38 @@ def open_votejson()-> dict:
     return data 
 
 
-def percent_calc(response_text: object) -> dict:
-    """ Calculates percentage from vote returns dict: option:%count """
-    votes_dict = json.loads(response_text)
-    votes_data = votes_dict["data"]
+class HBar(Graph):
+    """ Concrete class of Graph to produce horizontal bar chart """
+    def etl(self,response: object) -> dict:
+        """ Calculates the percentage of results """
+        votes_dict = response.json()
+        votes_data = votes_dict = votes_dict["options"]
+        
+        # collecting options and calculating sum
+        total = 0
+        graph_data = defaultdict(list)
+        for e in votes_data:
+            graph_data['Options'].append(e['optionText'])
+            total += e['count']
+            
+        # calculating percentage and collection
+        for e in votes_data:
+            percentage = round((e['count'] /total)*100)
+            graph_data['Percentage Votes'].append(percentage)
+            
+        return graph_data
     
-    graph_data = defaultdict(list)
-    graph_data["Options"] = list(votes_data.keys())
-    total =  sum(list(votes_data.values()))
-    for option in votes_data:
-        int_percentage = round((votes_data[option]/total)*100)
-        graph_data["Percentage of Votes"].append(int_percentage)
-    
-    return graph_data
+    def fig(self,graph_data: dict) -> object:
+        """ Creates graph """
+        x_axis = list(graph_data.keys())[1]
+        y_axis = list(graph_data.keys())[0]
+        fig = px.bar(graph_data,x=x_axis,y=y_axis)
+        return fig
 
+    
+    def output(self,fig:object) -> None:
+        pass
+    
 
 # def create_graph(graph_data: dict) -> object:
 #     x_axis = list(graph_data.keys())[1]
@@ -49,4 +68,3 @@ def percent_calc(response_text: object) -> dict:
 
 # fig = px.bar(graph_data,x=list(graph_data.keys())[1],y=list(graph_data.keys())[0])
 # fig.show()
-    

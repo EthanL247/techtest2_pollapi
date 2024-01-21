@@ -6,17 +6,17 @@
     {
     "optionId": 1,
     "optionText": "Manchester City",
-    "count":0
+    "count":10
     },
     {
     "optionId": 2,
     "optionText": "Arsenal",
-    "count":0
+    "count":20
     },
     {
     "optionId": 3,
     "optionText": "Liverpool",
-    "count":0
+    "count":70
     }
     ]
 }

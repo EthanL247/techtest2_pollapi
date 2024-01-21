@@ -6,29 +6,52 @@ sys.path.append(".") #allows modules to be discovered
 class DataSource(ABC):
     """ A base class/interface for CRUD methods and connnection methods for a data source """
     
-    # Usually for a data source you need details such as engine details, server name, log in etc
-    """ 1.Below is an abstract method with a constructor to initialise with.
-        2. This commented out because @abstractmethod makes so that concrete class has to override
-        the abstract method to initialise.
+    """Usually for a data source you need details such as engine details, server name, log in etc
+     Below is an abstract method with a constructor to initialise with."""
+    # @abstractmethod
+    # def __init__(self, engine: str, name: str, password: str, db_name: str):
+    #     self.engine = engine
+    #     self.name = name
+    #     self.password = password
+    #     self.db = db
         
-        So this method is needed in an actual program but not within the scope of the test.
-        Not commenting it out will force extra parameters/fixtures/inlinedata for testing. 
-    """
-    #@abstractmethod
-    # def __init__(self, engine: str, name: str, password: str, db_name: str)
-    # self.engine = engine
-    # self.name = name
-    # self.password = password
-    # self.db = db
-    
     @abstractmethod
     def connect(self) -> object:
         """ Connects to database and returns database object"""
         pass
     
+    @abstractmethod
     def close(self) -> None:
         """ closes db connection """
         pass 
+    
+    @abstractmethod
+    def search(self,query)-> object:
+        """ Searches within a database """ 
+        pass
+    
+
+class Graph(ABC):
+    """ A base class for Plotly graph implementations since I'm using interactive graphs rather than still images """
+    
+    @abstractmethod
+    def etl(self, data)-> dict:
+        """ Process json files into dicts to be used by plotly  """
+        pass
+    
+    @abstractmethod
+    def fig(self,data: dict) -> object:
+        """ Process to produce the graph object"""
+        pass
+    
+    @abstractmethod
+    def output(self,fig: object) -> None:
+        """ Directly inserts graph into html via Jinja2 """
+        pass
+        
+ 
+    
+    
         
     
      
