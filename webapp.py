@@ -26,8 +26,9 @@ def submit():
     
     # get vote data
     vote_data = requests.get(base_url+poll_id)
+    data = vote_data.text
     
-    return render_template('confirm.html', data=vote_data.text)
+    return redirect(url_for('confirm_page',data=data))
 
 # @app.route('/confirmation', methods=['GET','POST'])
 # def confirm_page():
@@ -40,9 +41,11 @@ def submit():
 #     return render_template('confirmation.html',form_data=form_data,
 #                            votes_data=graph_data)
 
-# @app.route('/confirm')
-# def confirm_page(poll_id):
-#     return poll_id
+@app.route('/confirm')
+def confirm_page():
+    data = request.args.get('data',None)
+    
+    return render_template('confirm.html',data=data)
     
 
 if __name__ == '__main__':
