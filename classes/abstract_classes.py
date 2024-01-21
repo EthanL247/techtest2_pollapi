@@ -45,7 +45,7 @@ class Graph(ABC):
         pass
     
     @abstractmethod
-    def output(self,fig: object) -> None:
+    def export(self,fig: object) -> None:
         """ Directly inserts graph into html via Jinja2 """
         pass
         

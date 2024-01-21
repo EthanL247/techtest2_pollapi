@@ -3,11 +3,13 @@
 import json
 import plotly.express as px
 from collections import defaultdict
-from classes.abstract_classes import Graph
+import os 
+import sys
 
 #custom libraries
-import sys
 sys.path.append(".")#allows modules to be discovered
+from classes.abstract_classes import Graph
+
 
 def open_polljson()-> dict:
     """ Opens and loads local example json file """ 
@@ -53,19 +55,17 @@ class HBar(Graph):
         return fig
 
     
-    def output(self,fig:object) -> None:
-        """ Writes graph to HTML File """
-        fig.write_html()
+    def export(self,fig:object) -> None:
+        """ Writes graph to HTML File to /static """
+        file = 'graph.html'
+        path = 'templates/'
+        file_path = path+file
+        fig.write_html(file_path)
+        #check if html succesfully created 
+        if os.path.isfile(file_path):
+            return True
+        else:
+            return False
+        
     
 
-# def create_graph(graph_data: dict) -> object:
-#     x_axis = list(graph_data.keys())[1]
-#     y_axis = list(graph_data.keys())[0]
-#     return px.bar(graph_data,x=x_axis,y=y_axis)
-
-# graph_data= defaultdict(list)
-# graph_data["Options"] =['Manchester','Arsenal','Liverpool']
-# graph_data['Percentage of Votes'] = [20,40,40]
-
-# fig = px.bar(graph_data,x=list(graph_data.keys())[1],y=list(graph_data.keys())[0])
-# fig.show()

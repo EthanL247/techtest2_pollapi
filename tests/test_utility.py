@@ -12,6 +12,7 @@ from classes.utility import HBar
 
 @pytest.fixture
 def response() -> object:
+    """ Gets vote data by id """
     return requests.get('http://localhost:5000/votes/1/1')
 
 def test_Hbar_percentage_calc_returndictionary(response):
@@ -32,3 +33,14 @@ def test_HBar_fig_return_figobject(response):
     fig = hbar.fig(data)
     #assert
     assert str(type(fig)) == "<class 'plotly.graph_objs._figure.Figure'>"
+    
+def test_HBar_fig_export_returnTrue(response):
+    # act
+    hbar = HBar()
+    #act
+    data = hbar.etl(response)
+    fig = hbar.fig(data)
+    res = hbar.export(fig)
+    #assert
+    res == True
+    
