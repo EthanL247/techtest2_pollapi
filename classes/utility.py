@@ -30,7 +30,11 @@ class HBar(Graph):
     """ Concrete class of Graph to produce horizontal bar chart """
     def etl(self,response: object) -> dict:
         """ Calculates the percentage of results """
-        votes_dict = response.json()
+        # Complexity O(2N)
+        if type(response) != str:
+            votes_dict = response.json()
+        else:
+            votes_dict = eval(response)
         votes_data = votes_dict = votes_dict["options"]
         
         # collecting options and calculating sum

@@ -1,7 +1,10 @@
+
 from flask import Flask, render_template,url_for, redirect,request
 import requests
 import json
-from classes.utility import percent_calc
+
+#internal libraries
+from classes.utility import HBar
 
 app = Flask("App")
 
@@ -25,10 +28,8 @@ def submit():
     send = requests.post(base_url)
     
     # get vote data
-    vote_data = requests.get(base_url+poll_id)
-    data = vote_data.text
-    
-    return redirect(url_for('confirm_page',data=data))
+    vote_data = requests.get(base_url+poll_id).json()  
+    return redirect(url_for('confirm_page',data=vote_data))
 
 # @app.route('/confirmation', methods=['GET','POST'])
 # def confirm_page():
@@ -44,8 +45,11 @@ def submit():
 @app.route('/confirm')
 def confirm_page():
     data = request.args.get('data',None)
-    
-    return render_template('confirm.html',data=data)
+    hbar = HBar()
+    graph_data = hbar.etl(data)
+    fig = hbar.fig(graph_data)
+    res = hbar.export(fig)
+    return render_template('confirm.html')
     
 
 if __name__ == '__main__':
