@@ -56,6 +56,10 @@ class HBar(Graph):
         x_axis = list(graph_data.keys())[1]
         y_axis = list(graph_data.keys())[0]
         fig = px.bar(graph_data,x=x_axis,y=y_axis)
+        fig.update_layout({
+            'plot_bgcolor':'rgba(0,0,0,0)',
+            'paper_bgcolor':'rgba(0,0,0,0)',
+        })
         return fig
 
     
