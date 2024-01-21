@@ -54,7 +54,8 @@ class HBar(Graph):
 
     
     def output(self,fig:object) -> None:
-        pass
+        """ Writes graph to HTML File """
+        fig.write_html()
     
 
 # def create_graph(graph_data: dict) -> object:
