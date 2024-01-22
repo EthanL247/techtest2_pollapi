@@ -1,0 +1,38 @@
+body {
+    background-image: url(/static/background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.logo {
+    content: url(/static/logo.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 15%;
+    max-height:15%;
+    margin: auto;
+
+}
+html *{
+    color:#996BF9
+}
+
+.custom {
+    text-align: center;
+    width: auto;
+    height: 50px;
+}
+
+.cmb {
+    display: block;
+    margin: 0 auto;
+}
+
+select{
+    width: 50vw;
+    margin:auto;
+}

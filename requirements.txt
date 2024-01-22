@@ -1,0 +1,4 @@
+flask
+fask_restful
+plotly-express
+requests
