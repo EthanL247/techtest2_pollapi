@@ -85,10 +85,29 @@
 1.**If no selection is submitted, clicking the submission button will reload vote page and not trigger any API call**  
 2.**Graph used is a fully interactive graph**   
 3.**All HTML elements are sized to viewport for better device scaling**   
+4. **HTML elements all inherit from a base template to allow better management of html files** 
 
 ## Testing
 1. Unit testing was carried out for any utility functions used.
 2. Backend API calls were tested however due to the limited scope testing was limited.
 3. Front end testing was done mostly end to end.
+
+# Project Evaluation
+There were some limitations which I would have wanted to improve on given more time.
+1. **Better TDD for backend using mock objects**
+     * I could've used mock objects to mock a concrete data source class. Therefore allowing me to tests specific cases such as:
+          * If connection could not be made.
+          * Id not found in query
+          * Unforseen return errors from database.
+2. **Slow speed in producing graph**
+   * Because the graph produced is an interactive graph it takes a bit of time to produce it, there could be alternative ways of not using the full grpah html.
+3. **Error handling at front end**
+   * Front end testing was lacking and so I could've added http status codes that could display specific type of errors such as:
+       * Poll id not found
+       * Post failure
+       * Post success
+4. **General refactoring**
+    * I can refactor the code a lot better as function for submitting had to do a lot which could've been abstracted into the backend. 
+
   
 
