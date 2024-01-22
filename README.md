@@ -66,6 +66,7 @@
 1. **I decided to split my RESTFul API into two micro-services because I assume that votes and polls table will be linked by a link table. Many smaller tables instead of big tables for speed.** 
    * Poll Class that specifically deals with the poll database tables.
    * Vote Class that specifically deals with the votes databas tables.
+   * Note that due to the limited scope of the brief, I changed to example JSON file to include {count} which tells you how many counts exist within an option.
 ![alt text](db.png)
 
 2. **I decided to create an abstract class called data source to follow the dependency inversion principle of SOLID. This class was not used due to the project scope but I feel it is good to demonstrate.**
