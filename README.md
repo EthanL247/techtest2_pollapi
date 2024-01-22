@@ -37,12 +37,12 @@
 * **api.py** The Restful API driver file.
 * **webapp.py** The web application driver file.  
 
-## How to Run Project##
+## How to Run Project
 1. Install libraries in the **requirements.txt** using pip in VSC.
 2. In one terminal type **python api.py**. You need to run API first before web app.
 3. In a new terminal type **python webapp.py**. Then click on the server to automatically open up a browser.
 
-## How to Run Tests ##
+## How to Run Tests
 1. In one terminal type **python api.py**. You need to run API so you can test it.
 2. Run all tests type in the same terminal type **pytest -svv**.
 
@@ -111,5 +111,10 @@ There were some limitations which I would have wanted to improve on given more t
 4. **General refactoring**
     * I can refactor the code a lot better as function for submitting had to do a lot which could've been abstracted into the backend. 
 
-  
+# Deployment 
+1. **If deploying**
+ a. The best way could be deploying it via cloud using virtual machines. However this will require some cost and therefore maybe easier than a server but more expensive.  
+ b. Since the API directly interacts with database security implementations would need to be used such as the concrete datasource class details need to be within a config file or stored somewhere else.  
+ c. Since the frontend is accessing API, then access policy maybe needed to retrict who can modify the data.   
+
 
