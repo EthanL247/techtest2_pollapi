@@ -69,7 +69,7 @@
    * Note that due to the limited scope of the brief, I changed to example JSON file to include {count} which tells you how many counts exist within an option.
 ![alt text](db.png)
 
-2. **I decided to create an abstract class called data source to follow the dependency inversion principle of SOLID. This class was not used due to the project scope but I feel it is good to demonstrate.**
+2. **I decided to create an abstract class called data source to follow the dependency inversion principle of SOLID. This class was created but not instantiated due to project scope but I feel it is good to demonstrate.**
    * There maybe many types of databases so therefore API couples with abstract class.
    * The connection of database, exectuing querying and even searching is then done within the database class NOT the micro-service classes.
  ![alt text](poll_ms.png)
