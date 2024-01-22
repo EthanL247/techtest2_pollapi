@@ -62,11 +62,14 @@
   * This allows encapsulation of graph tweaking away from everything else.
 
 4.**Within the API Vote class I added a constructor that is a list. This list then appends any POST resources carried out and therefore now the POST resource is in memory.** 
-  * Within the API terminal you can see that when POST vote is used up, the in memeory json file count updates to whatever the user has inputed. This is automatically printed in the API terminal.
+  * Within the API terminal you can see that when POST vote is used up, the in memory json file count updates to whatever the user has inputed. This is automatically printed in the API terminal.
 
 ![alt text](vote_ms.png)
 
 ## Web  App Highlights
+1.**If no selection is submitted, clicking the submission button will reload vote page and not trigger any API call**
+2.**Graph used is a fully interactive graph** 
+3.**All HTML elements are sized to viewport for better device scaling**
 
 
   
