@@ -37,6 +37,16 @@
 * **api.py** The Restful API driver file.
 * **webapp.py** The web application driver file.  
 
+## How to Run Project##
+1. Install libraries in the **requirements.txt** using pip in VSC.
+2. In one terminal type **python api.py**. You need to run API first before web app.
+3. In a new terminal type **python webapp.py**. Then click on the server to automatically open up a browser.
+
+## How to Run Tests ##
+1. In one terminal type **python api.py**. You need to run API so you can test it.
+2. Run all tests type in the same terminal type **pytest -svv**.
+
+# My Implementation
 
 
 
