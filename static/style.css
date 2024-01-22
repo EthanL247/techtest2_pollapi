@@ -31,3 +31,8 @@ html *{
     display: block;
     margin: 0 auto;
 }
+
+select{
+    width: 50vw;
+    margin:auto;
+}

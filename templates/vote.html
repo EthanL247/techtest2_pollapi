@@ -4,13 +4,13 @@
 <form method="post">
 <h1 style="font-size:5vw;color:white">{{data.question}}</h1>
 <div class="custom">
-<select name="option_id" class="cmb" multiple aria-label="multiple select example">
+<select name="option_id" class="cmb" multiple aria-label="multiple select example" style="font-size:4vw;">
     {% for i in range(data.options|length) %}
     <option value="{{data.options[i].optionId}}">{{data.options[i].optionText}}</option>
     {% endfor %}
 </select>
 <input type="hidden" name="poll_id" value="{{data.pollId}}">
-<input type="submit" value="Submit">
+<input type="submit" value="Submit" style="height:5em; width:10em;font-size:1.5em">
 </div>
 </form>
 {%endblock%}
