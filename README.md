@@ -62,6 +62,14 @@
    1. Dedicated library to plot information that also uses javascript to extend the capabilities of Python.
 
 # My Implementation
+
+## Assumptions Overview
+1. Project is small in scope.
+2. Polls table and Votes table are different and linked by a link table.
+3. Database likely to change.
+4. There could be more graphs types.
+5. Votes table has schema options_id and counts and therefore the indivudal who votes is not relevant. 
+
 ## API Highlights
 1. **I decided to split my RESTFul API into two micro-controllers because I assume that votes and polls table will be linked by a link table. Many smaller tables instead of big tables for speed.** 
    * Poll Class that specifically deals with the poll database tables.
@@ -69,7 +77,7 @@
    * Note that due to the limited scope of the brief, I changed to example JSON file to include {count} which tells you how many counts exist within an option.
 ![alt text](db.png)
 
-2. **I decided to create an abstract class called data source to follow the dependency inversion principle of SOLID. This class was created but not instantiated due to project scope but I feel it is good to demonstrate.**
+2. **I decided to create an abstract class called data source to follow the dependency inversion principle of SOLID. No concrete class of data source was created due to project scope but I feel it is good to demonstrate.**
    * There maybe many types of databases so therefore API couples with abstract class.
    * The connection of database, exectuing querying and even searching is then done within the database class NOT the micro-service classes.
  ![alt text](poll_ms.png)
@@ -112,9 +120,10 @@ There were some limitations which I would have wanted to improve on given more t
     * I can refactor the code a lot better as function for submitting had to do a lot which could've been abstracted into the backend. 
 
 # Deployment 
-1. **If deploying**  
- a. The best way could be deploying it via cloud using virtual machines. However this will require some cost and therefore maybe easier than a server but more expensive.     
+**If deploying**  
+ a. The best way could be deploying it via cloud using virtual machines, since cloud deployment are usually platforms that have database connections this would be my preference as it is also likely cheaper depending on usage.   
  b. Since the API directly interacts with database security implementations would need to be used such as the concrete datasource class details need to be within a config file or stored somewhere else.     
  c. Since the frontend is accessing API, then access policy maybe needed to retrict who can modify the data.      
+ d. Adding authentification on API to lock it down, extra security features could be TLS certification and  OAuth2 ( if caring about who voted). 
 
 
