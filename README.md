@@ -46,6 +46,21 @@
 1. In one terminal type **python api.py**. You need to run API so you can test it.
 2. Run all tests type in the same terminal type **pytest -svv**.
 
+# Project Stack Choice
+* **Python**
+   * Python is my main language and therefore the most comfortable. However I understand that means front end's output is not as flexible using languages like JavaScript with React.
+* **Flask / Flask RESTFul for  building API and Web Application**
+   1. Flask is a light weight web development framework perfect for limited scope / smaller development projects. Since this is limited scope with no obvious admin functions then Django would've not contributed positively to the one week timelimit.
+   2. Flask itself does support RESTFul API with good documentations.
+   3. These two are industry standard tools within the python ecosystem.
+* **Pytest for testing**
+   1. Pytest offers good functionalities for unit testing such as fixtures which is equivalent of 'inlinedata' in C#. Allowing you to have test inputs as well as even mock objects.
+   2. Pytest also offers easier and simplier assertion statements.
+* **Bootstrap**
+   1. Easier ways to implement certain features and upgrading the aesthetic of a web app.
+* **Plotly for ploting**
+   1. Dedicated library to plot information that also uses javascript to extend the capabilities of Python.
+
 # My Implementation
 ## API Highlights
 1. **I decided to split my RESTFul API into two micro-services because I assume that votes and polls table will be linked by a link table. Many smaller tables instead of big tables for speed.** 
@@ -67,10 +82,13 @@
 ![alt text](vote_ms.png)
 
 ## Web  App Highlights
-1.**If no selection is submitted, clicking the submission button will reload vote page and not trigger any API call**
-2.**Graph used is a fully interactive graph** 
-3.**All HTML elements are sized to viewport for better device scaling**
+1.**If no selection is submitted, clicking the submission button will reload vote page and not trigger any API call**  
+2.**Graph used is a fully interactive graph**   
+3.**All HTML elements are sized to viewport for better device scaling**   
 
-
+## Testing
+1. Unit testing was carried out for any utility functions used.
+2. Backend API calls were tested however due to the limited scope testing was limited.
+3. Front end testing was done mostly end to end.
   
 
