@@ -92,6 +92,7 @@
 1. Unit testing was carried out for any utility functions used.
 2. Backend API calls were tested however due to the limited scope testing was limited.
 3. Front end testing was done mostly end to end.
+4. Mobile view were tested on edge device emulation
 
 # Project Evaluation
 There were some limitations which I would have wanted to improve on given more time.
