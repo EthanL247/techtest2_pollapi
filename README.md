@@ -63,7 +63,7 @@
 
 # My Implementation
 ## API Highlights
-1. **I decided to split my RESTFul API into two micro-services because I assume that votes and polls table will be linked by a link table. Many smaller tables instead of big tables for speed.** 
+1. **I decided to split my RESTFul API into two micro-controllers because I assume that votes and polls table will be linked by a link table. Many smaller tables instead of big tables for speed.** 
    * Poll Class that specifically deals with the poll database tables.
    * Vote Class that specifically deals with the votes databas tables.
    * Note that due to the limited scope of the brief, I changed to example JSON file to include {count} which tells you how many counts exist within an option.
