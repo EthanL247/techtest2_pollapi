@@ -22,7 +22,6 @@ def submit():
     """Submit to post poll_id and option_id"""
     option_id = request.form.get('option_id')
     poll_id = request.form.get('poll_id')
-    
     # post vote: updates correct option count by 1 in local memory of API
     base_url = 'http://localhost:5000/votes/'+poll_id+'/'+option_id
     send = requests.post(base_url)

@@ -8,12 +8,12 @@ class DataSource(ABC):
     
     """Usually for a data source you need details such as engine details, server name, log in etc
      Below is an abstract method with a constructor to initialise with."""
-    # @abstractmethod
-    # def __init__(self, engine: str, name: str, password: str, db_name: str):
-    #     self.engine = engine
-    #     self.name = name
-    #     self.password = password
-    #     self.db = db
+    @abstractmethod
+    def __init__(self, engine: str, name: str, password: str, db_name: str):
+        self.engine = engine
+        self.name = name
+        self.password = password
+        self.db = db
         
     @abstractmethod
     def connect(self) -> object:
