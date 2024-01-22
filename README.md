@@ -47,6 +47,27 @@
 2. Run all tests type in the same terminal type **pytest -svv**.
 
 # My Implementation
+## API Highlights
+1. **I decided to split my RESTFul API into two micro-services because I assume that votes and polls table will be linked by a link table. Many smaller tables instead of big tables for speed.** 
+   * Poll Class that specifically deals with the poll database tables.
+   * Vote Class that specifically deals with the votes databas tables.
+![alt text](db.png)
+
+2. **I decided to create an abstract class called data source to follow the dependency inversion principle of SOLID. This class was not used due to the project scope but I feel it is good to demonstrate.**
+   * There maybe many types of databases so therefore API couples with abstract class.
+   * The connection of database, exectuing querying and even searching is then done within the database class NOT the micro-service classes.
+ ![alt text](poll_ms.png)
+
+3.**I also created an abstract class for graphs as there could be a lot of different types of graphs implemented. A concrete class for horizontal bar chart was used in the project**
+  * This allows encapsulation of graph tweaking away from everything else.
+
+4.**Within the API Vote class I added a constructor that is a list. This list then appends any POST resources carried out and therefore now the POST resource is in memory.** 
+  * Within the API terminal you can see that when POST vote is used up, the in memeory json file count updates to whatever the user has inputed. This is automatically printed in the API terminal.
+
+![alt text](vote_ms.png)
+
+## Web  App Highlights
 
 
+  
 
