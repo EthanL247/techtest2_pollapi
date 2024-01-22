@@ -3,7 +3,7 @@
 
 {%block content%}
 <form method="post">
-<p>{{data.question}}</p>
+<h1 style="font-size:5vw;color:white">{{data.question}}</h1>
 <select name="option_id" class="form-select" multiple aria-label="multiple select example">
     {% for i in range(data.options|length) %}
     <option value="{{data.options[i].optionId}}">{{data.options[i].optionText}}</option>
