@@ -7,7 +7,7 @@ from abc import ABC
 #custom modules
 import sys
 sys.path.append(".") #allows modules to be discovered
-from classes.utility import open_polljson, open_votejson
+from classes.utility import open_polljson
 
 app = Flask("API",template_folder="templates")
 api = Api(app)

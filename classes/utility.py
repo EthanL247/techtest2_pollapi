@@ -13,18 +13,10 @@ from classes.abstract_classes import Graph
 
 def open_polljson()-> dict:
     """ Opens and loads local example json file """ 
-    location = 'D:/python_projects/techtest2_pollapi/resources/poll_example.json'
+    location = 'resources/poll_example.json'
     f = open(location)
     data = json.load(f)
     return data 
-
-def open_votejson()-> dict:
-    """ Opens and loads local example json file """ 
-    location = 'D:/python_projects/techtest2_pollapi/resources/vote_example.json'
-    f = open(location)
-    data = json.load(f)
-    return data 
-
 
 class HBar(Graph):
     """ Concrete class of Graph to produce horizontal bar chart """
