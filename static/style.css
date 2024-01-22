@@ -18,5 +18,16 @@ body {
 
 }
 html *{
-    color:rgb(218, 13, 13)
+    color:#996BF9
+}
+
+.custom {
+    text-align: center;
+    width: auto;
+    height: 50px;
+}
+
+.cmb {
+    display: block;
+    margin: 0 auto;
 }

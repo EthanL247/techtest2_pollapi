@@ -1,15 +1,16 @@
 {% extends 'base.html'%}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
 
 {%block content%}
 <form method="post">
 <h1 style="font-size:5vw;color:white">{{data.question}}</h1>
-<select name="option_id" class="form-select" multiple aria-label="multiple select example">
+<div class="custom">
+<select name="option_id" class="cmb" multiple aria-label="multiple select example">
     {% for i in range(data.options|length) %}
     <option value="{{data.options[i].optionId}}">{{data.options[i].optionText}}</option>
     {% endfor %}
 </select>
 <input type="hidden" name="poll_id" value="{{data.pollId}}">
 <input type="submit" value="Submit">
+</div>
 </form>
 {%endblock%}
