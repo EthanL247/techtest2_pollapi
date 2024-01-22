@@ -112,9 +112,9 @@ There were some limitations which I would have wanted to improve on given more t
     * I can refactor the code a lot better as function for submitting had to do a lot which could've been abstracted into the backend. 
 
 # Deployment 
-1. **If deploying**
- a. The best way could be deploying it via cloud using virtual machines. However this will require some cost and therefore maybe easier than a server but more expensive.  
- b. Since the API directly interacts with database security implementations would need to be used such as the concrete datasource class details need to be within a config file or stored somewhere else.  
- c. Since the frontend is accessing API, then access policy maybe needed to retrict who can modify the data.   
+1. **If deploying**  
+ a. The best way could be deploying it via cloud using virtual machines. However this will require some cost and therefore maybe easier than a server but more expensive.     
+ b. Since the API directly interacts with database security implementations would need to be used such as the concrete datasource class details need to be within a config file or stored somewhere else.     
+ c. Since the frontend is accessing API, then access policy maybe needed to retrict who can modify the data.      
 
 
